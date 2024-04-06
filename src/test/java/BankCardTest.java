@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -38,7 +39,7 @@ public class BankCardTest {
     @Test
     void ValidDataTest() {
         driver.findElement(By.cssSelector("[type='text']")).sendKeys("Иванов Иван");
-        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+70001115566");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79998887766");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector(".button__text")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText();
@@ -48,7 +49,7 @@ public class BankCardTest {
     @Test
     void InvalidNameSurnameTest1() {
         driver.findElement(By.cssSelector("[type='text']")).sendKeys("Ivanov");
-        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+70001115566");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79998887766");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector(".button__text")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText();
@@ -58,7 +59,7 @@ public class BankCardTest {
     @Test
     void InvalidNameSurnameTest2() {
         driver.findElement(By.cssSelector("[type='text']")).sendKeys("");
-        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+70001115566");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79998887766");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector(".button__text")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id='name'].input_invalid .input__sub")).getText();
@@ -67,8 +68,8 @@ public class BankCardTest {
 
     @Test
     void EmptyCheckbox() {
-        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Петров-Иванов Иван");
-        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+70001115566");
+        driver.findElement(By.cssSelector("[type='text']")).sendKeys("Иванов-Петров Иван");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("+79998887766");
         driver.findElement(By.cssSelector(".button__text")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid .checkbox__text")).getText();
         assertEquals("Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй", text.trim());
@@ -87,7 +88,7 @@ public class BankCardTest {
     @Test
     void InvalidPhoneTest2() {
         driver.findElement(By.cssSelector("[type='text']")).sendKeys("Иванов-Петров Иван");
-        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("80001115566");
+        driver.findElement(By.cssSelector("[type='tel']")).sendKeys("89998887766");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector(".button__text")).click();
         String text = driver.findElement(By.cssSelector("[data-test-id='phone'].input_invalid .input__sub")).getText();
